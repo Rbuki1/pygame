@@ -8,7 +8,7 @@ class UI:
         self.display_surface = pygame.display.get_surface()
         self.font = pygame.font.Font(UI_FONT, UI_FONT_SIZE)
 
-        # настройки полосок статистики
+        # настройка полосок статистики
         self.health_bar_rect = pygame.Rect(10, 10, HEALTH_BAR_WIDTH, BAR_HEIGHT)
         self.energy_bar_rect = pygame.Rect(10, 34, ENERGY_BAR_WIDTH, BAR_HEIGHT)
 
@@ -29,13 +29,13 @@ class UI:
         # рисуем задний фон
         pygame.draw.rect(self.display_surface, UI_BG_COLOR, bg_rect)
 
-        # конвертируем статистику в пиксели
+        # конвертируем статистику в пиксли
         ratio = current / max_amount
         current_width = bg_rect.width * ratio
         current_rect = bg_rect.copy()
         current_rect.width = current_width
 
-        # рисуем полоски
+        # рисуем полоски статистики
         pygame.draw.rect(self.display_surface, color, current_rect)
         pygame.draw.rect(self.display_surface, UI_BORDER_COLOR, bg_rect, 3)
 
@@ -59,14 +59,14 @@ class UI:
         return bg_rect
 
     def weapon_overlay(self, weapon_index, has_switched):
-        bg_rect = self.selection_box(10, 630, has_switched) # оружие
+        bg_rect = self.selection_box(10, 630, has_switched)
         weapon_surf = self.weapon_graphics[weapon_index]
         weapon_rect = weapon_surf.get_rect(center=bg_rect.center)
 
         self.display_surface.blit(weapon_surf, weapon_rect)
 
     def magic_overlay(self, magic_index, has_switched):
-        bg_rect = self.selection_box(80, 635, has_switched)  # магия
+        bg_rect = self.selection_box(80, 635, has_switched)
         magic_surf = self.magic_graphics[magic_index]
         magic_rect = magic_surf.get_rect(center=bg_rect.center)
 
